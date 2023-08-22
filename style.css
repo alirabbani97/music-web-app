@@ -39,6 +39,7 @@ section.browsing {
   height: 100vh;
   min-height: fit-content;
   width: 100vw;
+  position: relative;
 }
 .browsing > div {
   width: 100vw;
@@ -152,7 +153,7 @@ CATALOG
 section .catalog {
   background-image: linear-gradient(to top, #101727 30%, #00d3eb 150%);
   height: 100vh;
-  overflow-y:scroll ;
+  overflow-y:auto ;
   overflow-x: hidden;
 }
 
@@ -303,12 +304,13 @@ PLAYER BAR
   display: flex;
   justify-content: space-between;
   background-color: var(--back-color);
-  height: 100x;
+  height: 500x;
   position: sticky;
   bottom: 0;
   width: 100vw;
   box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.1);
   column-gap: 3vw;
+  padding: 20px 0;
 
 }
 .player {
@@ -377,16 +379,24 @@ PLAYER BAR
 }
 
 #seeker {
-  -webkit-appearance: none; /* Override default CSS styles */
+ -webkit-appearance: none;
   appearance: none;
   width: 100%; /* Full-width */
   height: 1px; /* Specified height */
   background: var(--font-secondary); /* Grey background */
   outline: none; /* Remove outline */
+
+}
+
+
+
+input[type=range]#slider:active::-webkit-slider-runnable-track {
+  background: #414991;
+  border-color: #414991;
 }
 
 #seeker::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none;
   appearance: none;
   width: 15px;
   height: 15px;
@@ -397,7 +407,6 @@ PLAYER BAR
     #00000000 40%,
     #00d0ff 80%
   );
-
   cursor: pointer; /* Cursor on hover */
 }
 
@@ -417,6 +426,7 @@ PLAYER BAR
   width: 100%;
   max-width: 100px;
   background-color: var(--font-secondary);
+  
 }
 #slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
