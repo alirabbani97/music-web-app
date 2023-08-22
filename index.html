@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Web App</title>
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <!-------------BROWSING-------------------->
+
+      <section class="browsing">
+        <!-------------PLAYLIST BAR-------------------->
+
+        <div class="playlist-bar">
+          <h3 class="playlist tab-name">Playlist</h3>
+          <!-------------PLAYLIST TABS-------------------->
+
+          <div class="playlist tabs">
+            <ul>
+              <li class="active">
+                <img class="circle" src="./svg/circle-secondary.png" alt="" />My
+                Playlist
+              </li>
+              <li>
+                <img
+                  class="circle"
+                  src="./svg/circle-secondary.png"
+                  alt=""
+                />Last Listening
+              </li>
+              <li>
+                <img
+                  class="circle"
+                  src="./svg/circle-secondary.png"
+                  alt=""
+                />Recommended
+              </li>
+            </ul>
+          </div>
+
+          <!-------------PLAYLIST LIST------------------->
+
+          <div class="playlist list">
+            <div class="song-card">
+              <p class="song song-number">01</p>
+              <div class="song-img">
+                <a href=""><img
+                  class="song-thumb"
+                  src="./img/LinkinParkIntheEnd.jpg"
+                  alt="thumbnail of song"
+                /></a>
+              </div>
+
+              <div class="song song-info">
+                <p class="song-name">In The End</p>
+                <p class="artist-name">Linkin Park</p>
+              </div>
+            </div>
+            <div class="song-card">
+              <p class="song song-number">02</p>
+              <div class="song-img">
+                <img
+                  class="song-thumb"
+                  src="./img/SyreJadenSmith.jpg"
+                  alt="thumbnail of song"
+                />
+              </div>
+
+              <div class="song song-info">
+                <h3 class="song-name">Icon</h3>
+                <p class="artist-name">Jaden Smith</p>
+              </div>
+            </div>
+            <div class="song-card">
+              <hp class="song song-number">03</hp>
+              <div class="song-img">
+                <img
+                  class="song-thumb"
+                  src="./img/currents_grande.webp"
+                  alt="thumbnail of song"
+                />
+              </div>
+
+              <div class="song song-info">
+                <h3 class="song-name">The Less I Know The Better</h3>
+                <p class="artist-name">Tame Impala</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-------------CATALOG -------------------->
+
+        <div class="catalog">
+          <nav class="navbar">
+            <ul>
+              <li>DISCOVER</li>
+              <li>MY LIBRARY</li>
+              <li>RADIO</li>
+            </ul>
+            <input class="search-input" type="text" placeholder="Search" />
+            <div class="account-icon">
+              <a href="#"
+                ><img src="./img/Artboard 1@3x.png" alt="Account icon"
+              /></a>
+            </div>
+          </nav>
+          <!-------------CATALOG CONTAINER-------------------->
+          <section class="catalog-container">
+            <div class="catalog-banner">
+              <div id="banner-title" class="banner-text">Flume: Skins</div>
+              <p id="banner-para" class="banner-text">
+                Flume walks us through his 'weird' new album, "Skins". He has
+                one goal: "I wanna make werid stuff."
+              </p>
+              <button class="btn-banner play" type="button">PLAY</button>
+              <button class="btn-banner follow" type="button">FOLLOW</button>
+            </div>
+            <div class="popular-albums">
+              <div class="headingbar">
+                <h3>Popular Albums</h3>
+                <div></div>
+              </div>
+              <div class="popular-albums-carousel carousel">
+                <div class="album card">
+                  <a href="#"
+                    ><img
+                      src="./img/airbag.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/caribou.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/be.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/currents_grande.webp"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/eob.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/gia.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/imploding.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/lian.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/LinkinParkIntheEnd.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/modus.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/airbag.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/caribou.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/be.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/currents_grande.webp"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/eob.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/gia.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+                <div class="album">
+                  <a href="#"
+                    ><img
+                      src="./img/imploding.jpg"
+                      alt=""
+                      width="130px"
+                      height="130px"
+                  /></a>
+                  <h4>Album Name</h4>
+                  <p>Artist Name</p>
+                </div>
+              </div>
+            </div>
+            <div class="popular-artists">
+              <div class="headingbar">
+                <h3>Popular Artists</h3>
+                <div>  </div>
+              </div>
+              <div class="popular-artists-carousel carousel">
+                <div class="artist card">
+                  <div class="artist-img">
+                  <a href="#"
+                    ><img src="./img/airbag.jpg" alt="" width="120px" height="120px"/></a>
+                </div>
+                  <h4>Artist Name</h4>
+              
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <!-------------PLAYER BAR-------------------->
+
+      <section class="playerbar">
+        <!-------------PLAYER THUMB-------------------->
+
+        <div class="player details">
+          <img class="equalizer-gif" src="./svg/equalizer.gif" alt="" />
+          <div class="song-img">
+            <img
+              class="song-thumb"
+              src="./img/currents_grande.webp"
+              alt="thumbnail of song"
+            />
+          </div>
+
+          <div class="song song-info">
+            <h3 class="song-name">The Less I Know The Better</h3>
+            <p class="artist-name">Tame Impala</p>
+          </div>
+        </div>
+
+        <!-------------PLAYER BUTTONS-------------------->
+
+        <div class="player buttons">
+          <img
+            id="step-back"
+            class="btn"
+            src="./svg/step-backward.png"
+            alt=""
+          />
+          <img id="play" class="btn" src="./svg/play.png" alt="" />
+          <img id="step-fwd" class="btn" src="./svg/step-forward.png" alt="" />
+        </div>
+        <div class="player seeker">
+          <div>2:34</div>
+          <input type="range" name="range" min="0" max="100" value="50" id="seeker" />
+          <div>2:34</div>
+        </div>
+        <div class="player options">
+          <img id="shuffle" class="btn" src="./svg/arrows-cross.png" alt="" />
+          <img id="repeat" class="btn" src="./svg/arrows-repeat.png" alt="" />
+        </div>
+        <div class="player volume">
+          <img id="volume" class="btn" src="./svg/volume-full.png" alt="" />
+
+          <input type="range" min="1" max="100" value="50" id="slider" />
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
