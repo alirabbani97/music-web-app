@@ -21,7 +21,7 @@ let songs = [
     songId: "01",
   },
   {
-    songName: "Why We lose",
+    songName: "Why We Lose",
     artistName: "Cartoon",
     filePath: "./assets/audio/Cartoon - Why We Lose.mp3",
     coverPath: "./assets/covers/whywelose.jpg",
@@ -79,11 +79,20 @@ playlist.forEach((element, i) => {
   element.querySelector(".song-name").innerText = songs[i].songName;
   element.querySelector(".artist-name").innerText = songs[i].artistName;
 
+  //player bar details updater
+
+  function playerDetailsUpdate(index) {
+    document.querySelector(".song-name.player").innerText =
+      songs[index].songName;
+    document.querySelector(".artist-name.player").innerText =
+      songs[index].artistName;
+    document.querySelector("#coverImagePlayer").src = songs[index].coverPath;
+  }
+
   // Songs play from playlist
   playlist[i].addEventListener("click", (e) => {
     if (audioElement.paused) {
-      document.querySelector('.song-name.player').innerText = songs[i].songName;
-      
+      playerDetailsUpdate(i);
       playlist[i].classList.add = " .active";
       playButton.src = "./svg/pause.png";
       audioElement.src = songs[i].filePath;
@@ -91,6 +100,8 @@ playlist.forEach((element, i) => {
       playingGif.style.opacity = 1;
       anotherPlaying = true;
     } else {
+      playerDetailsUpdate(i);
+      audioSeeker.value = 0;
       audioElement.pause();
       audioElement.src = songs[i].filePath;
       audioElement.play();

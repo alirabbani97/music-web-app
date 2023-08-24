@@ -171,8 +171,11 @@ section .catalog {
   background-image: linear-gradient(to top, #101727 30%, #00d3eb 150%);
   overflow-y: auto;
   overflow-x: hidden;
+  
 }
-
+section .catalog::-webkit-scrollbar{
+  appearance: none;
+}
 /************* Nav bar *****************/
 
 nav.navbar {
