@@ -119,11 +119,14 @@ section.browsing {
   cursor: pointer;
   
 }
-.song-card:hover,
+.song-card:hover{
+  background-color: #61627a50;
+  border-radius: 5px;
+}
+
 .song-card:focus{
   background-color: #61627a50;
   border-radius: 5px;
-
 }
 .song-number {
   color: var(--font-secondary);
