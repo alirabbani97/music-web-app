@@ -23,16 +23,14 @@ body {
 }
 body {
   overflow: hidden;
-
 }
-main{
+main {
   position: relative;
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 section.browsing {
   display: flex;
@@ -153,10 +151,9 @@ CATALOG
 section .catalog {
   background-image: linear-gradient(to top, #101727 30%, #00d3eb 150%);
   height: 100vh;
-  overflow-y:auto ;
+  overflow-y: auto;
   overflow-x: hidden;
 }
-
 
 /************* Nav bar *****************/
 
@@ -222,13 +219,11 @@ CATALOG CONTAINER
 
 ******************/
 
-
 .catalog-container {
   display: flex;
   flex-direction: column;
   margin: 5vh 5vw 0;
   row-gap: 2rem;
-  
 }
 
 .catalog-banner {
@@ -275,7 +270,7 @@ div #banner-title {
   border-radius: 1px;
   overflow: hidden;
 }
-.artist{
+.artist {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -290,9 +285,8 @@ div #banner-title {
   overflow: hidden;
 }
 
-.popular-artists-carousel .artist h4{
- margin-top: 10px;
-
+.popular-artists-carousel .artist h4 {
+  margin-top: 10px;
 }
 
 /*************
@@ -314,7 +308,6 @@ PLAYER BAR
   box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.1);
   column-gap: 3vw;
   padding: 20px 0;
-
 }
 .player {
   min-width: fit-content;
@@ -341,6 +334,8 @@ PLAYER BAR
   width: 20px;
   mix-blend-mode: lighten;
   margin-left: 20px;
+  opacity: 0;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .playerbar .song-thumb {
@@ -355,6 +350,7 @@ PLAYER BAR
 
 .player.buttons {
   width: fit-content;
+  position: relative;
 }
 
 .player.buttons .btn {
@@ -364,6 +360,12 @@ PLAYER BAR
 
 .player.buttons #play {
   width: 20px;
+}
+.player.buttons #pause {
+  width: 20px;
+  position: absolute;
+  left: 35px;
+  display: none;
 }
 
 .player.buttons #play:hover {
@@ -382,20 +384,12 @@ PLAYER BAR
 }
 
 #seeker {
- -webkit-appearance: none;
+  -webkit-appearance: none;
   appearance: none;
   width: 100%; /* Full-width */
   height: 1px; /* Specified height */
   background: var(--font-secondary); /* Grey background */
   outline: none; /* Remove outline */
-
-}
-
-
-
-input[type=range]#slider:active::-webkit-slider-runnable-track {
-  background: #414991;
-  border-color: #414991;
 }
 
 #seeker::-webkit-slider-thumb {
@@ -429,7 +423,6 @@ input[type=range]#slider:active::-webkit-slider-runnable-track {
   width: 100%;
   max-width: 100px;
   background-color: var(--font-secondary);
-  
 }
 #slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
