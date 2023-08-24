@@ -50,6 +50,7 @@ section.browsing {
   flex-basis: 400px;
   position: sticky;
   height: 100vh;
+  min-height: fit-content;
   left: 0;
   display: flex;
   flex-direction: column;
@@ -122,6 +123,9 @@ section.browsing {
   min-width: fit-content;
   cursor: pointer;
 }
+.song-card .active {
+  background-color: #61627a50;
+}
 .song-card:hover {
   background-color: #61627a50;
 }
@@ -165,7 +169,6 @@ CATALOG
 
 section .catalog {
   background-image: linear-gradient(to top, #101727 30%, #00d3eb 150%);
-  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -234,8 +237,9 @@ CATALOG CONTAINER
 .catalog-container {
   display: flex;
   flex-direction: column;
-  margin: 5vh 5vw 0;
+  margin: 3vh 5vw 0;
   row-gap: 2rem;
+  height: 100%;
 }
 
 .catalog-banner {
