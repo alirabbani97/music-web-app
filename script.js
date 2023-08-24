@@ -104,7 +104,7 @@ audioSeeker.addEventListener("input", (e) => {
 });
 
 audioSeeker.addEventListener('change',(e) => {
-  audioElement.currentTime = parseInt(audioSeeker.value *audioElement.duration / 100 ); 
+  audioElement.currentTime = parseInt(audioSeeker.value * audioElement.duration / 100 ); 
 
 })
 
