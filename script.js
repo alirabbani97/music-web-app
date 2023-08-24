@@ -80,13 +80,13 @@ playlist.forEach((element, i) => {
   playlist[i].addEventListener("click", (e) => {
     if (audioElement.paused) {
       playButton.src = "./svg/pause.png";
-      audioElement = new Audio(songs[i].filePath);
+      audioElement.src(songs[i].filePath);
       audioElement.play();
       playingGif.style.opacity = 1;
       anotherPlaying = true;
     } else {
       audioElement.pause();
-      audioElement = new Audio(songs[i].filePath);
+      audioElement.src(songs[i].filePath);
       audioElement.play();
     }
   });
@@ -111,7 +111,13 @@ playButton.addEventListener("click", (e) => {
 });
 
 // Listen to timeupdate
-audioElement.addEventListener("timeupdate", (e) => {
+audioElement.addEventListener("timeupdate", () => { 
+  if (audioElement.currentTime == audioElement.duration) {
+    playButton.src = "./svg/play.png";
+    audioElement.pause();
+    playingGif.style.opacity = 0;
+    audioSeeker.value = 0;
+  }
   audioSeeker.value = parseInt(
     (audioElement.currentTime / audioElement.duration) * 100
   );
@@ -122,12 +128,6 @@ audioElement.addEventListener("timeupdate", (e) => {
   document.getElementById("duration").innerText = parseInt(
     audioElement.duration
   );
-  if (audioElement.currentTime == audioElement.duration) {
-    playButton.src = "./svg/play.png";
-    audioElement.pause();
-    playingGif.style.opacity = 0;
-    audioSeeker.value = 0;
-  }
 });
 
 /* Slider Progress updater */
