@@ -381,16 +381,19 @@
 
         <!-------------Seeker-------------------->
 
-        <div class="player seeker">
-          <div>2:34</div>
-          <input
-            type="range"
-            name="range"
-            min="0"
-            max="100"
-            value="50"
-            id="seeker"
-          />
+        <div class="player-seeker">
+          <div>0:00</div>
+          <div class="seeker-container">
+            <input
+              type="range"
+              name="range"
+              min="0"
+              max="100"
+              value="0"
+              id="seeker"
+            />
+            <div class="slider-progress"></div>
+          </div>
           <div>2:34</div>
         </div>
 

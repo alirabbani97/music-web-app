@@ -335,7 +335,7 @@ PLAYER BAR
   mix-blend-mode: lighten;
   margin-left: 20px;
   opacity: 0;
-  transition: 1s cubic-bezier(0, .5, .75, 1);
+  transition: 0.5s ease-in ;
 }
 
 .playerbar .song-thumb {
@@ -374,15 +374,23 @@ PLAYER BAR
 
 /**************PLAYER SEEKER**************/
 
-.player.seeker {
+.player-seeker {
   width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
 }
 
-.player.seeker div {
-  margin: 0 10px;
-}
 
+.player-seeker .seeker-container{
+  display: flex;
+  width: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 1vw;
+}
 #seeker {
   -webkit-appearance: none;
   appearance: none;
@@ -390,14 +398,24 @@ PLAYER BAR
   height: 1px; /* Specified height */
   background: var(--font-secondary); /* Grey background */
   outline: none; /* Remove outline */
+  position: relative;
+ 
 }
+.slider-progress{
 
+  position: absolute;
+  height: 2px; /* Specified height */
+  background: var(--font-tertiary); 
+  width: 0; /* Full-width */
+
+}
 #seeker::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 15px;
   height: 15px;
   border-radius: 50%;
+  z-index: 10;
   background-image: radial-gradient(
     #00d0ff 20%,
     #00000000,
