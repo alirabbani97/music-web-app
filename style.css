@@ -361,12 +361,12 @@ PLAYER BAR
 .player.buttons #play {
   width: 20px;
 }
-.player.buttons #pause {
+/* .player.buttons #pause {
   width: 20px;
   position: absolute;
   left: 35px;
   display: none;
-}
+} */
 
 .player.buttons #play:hover {
   cursor: pointer;
