@@ -82,6 +82,7 @@ playlist.forEach((element, i) => {
   // Songs play from playlist
   playlist[i].addEventListener("click", (e) => {
     if (audioElement.paused) {
+      document.querySelector('.song-name.player').innerText = songs[i].songName;
       
       playlist[i].classList.add = " .active";
       playButton.src = "./svg/pause.png";
