@@ -60,9 +60,12 @@ playButton.addEventListener("click", (e) => {
   if (audioElement.paused || audioElement.currentTime <= 0) {
     playButton.src = "./svg/pause.png";
     audioElement.play();
+    playingGif.style.opacity = 1;
   } else {
     playButton.src = "./svg/play.png";
     audioElement.pause();
+    playingGif.style.opacity = 0;
+
   }
 });
 

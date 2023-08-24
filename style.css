@@ -335,7 +335,7 @@ PLAYER BAR
   mix-blend-mode: lighten;
   margin-left: 20px;
   opacity: 0;
-  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: 1s cubic-bezier(0, .5, .75, 1);
 }
 
 .playerbar .song-thumb {
