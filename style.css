@@ -255,6 +255,12 @@ CATALOG CONTAINER
   font-weight: 600;
   width: 150px;
   height: 35px;
+  cursor: pointer;
+}
+
+.btn-banner:hover {
+  color: var(--font-primary);
+  background-color: var(--hover-col);
 }
 
 div #banner-title {
