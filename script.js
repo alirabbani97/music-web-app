@@ -68,7 +68,7 @@ let songs = [
 //Playing Controls
 
 playButton.addEventListener("click", (e) => {
-  if (audioElement.paused || audioElement.currentTime <= 0) {
+  if (audioElement.paused) {
     playButton.src = "./svg/pause.png";
     audioElement.play();
     playingGif.style.opacity = 1;
@@ -81,11 +81,18 @@ playButton.addEventListener("click", (e) => {
 
 // Listen to timeupdate
 audioElement.addEventListener("timeupdate", (e) => {
+  if(audioElement.currentTime == audioElement.duration){
+    playButton.src = "./svg/play.png";
+    audioElement.pause();
+    playingGif.style.opacity = 0;
+    audioSeeker.value=0;
+  }
 
   audioSeeker.value = parseInt((audioElement.currentTime / audioElement.duration) * 100); 
   audioProgress.style.width = `${audioSeeker.value}%`;
   document.getElementById('current-time').innerText= parseInt(audioElement.currentTime);
   document.getElementById('duration').innerText= parseInt(audioElement.duration);
+
 });
 
 /* Slider Progress updater */
@@ -96,4 +103,8 @@ audioSeeker.addEventListener("input", (e) => {
   audioProgress.style.width = `${widthProgress}%`;
 });
 
+audioSeeker.addEventListener('change',(e) => {
+  audioElement.currentTime = parseInt(audioSeeker.value *audioElement.duration / 100 ); 
+
+})
 
