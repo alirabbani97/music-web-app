@@ -9,6 +9,7 @@
 
     <script src="main.js" defer></script>
   </head>
+
   <body>
     <main>
       <!-------------BROWSING-------------------->
@@ -46,7 +47,6 @@
           <!-------------PLAYLIST LIST------------------->
 
           <div class="playlist list">
-            
             <div class="song-card">
               <p class="song song-number">01</p>
               <div class="song-img">
@@ -92,7 +92,6 @@
                 <p class="artist-name">Tame Impala</p>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -383,7 +382,7 @@
         <!-------------Seeker-------------------->
 
         <div class="player-seeker">
-          <div>0:00</div>
+          <div id="current-time">0:00</div>
           <div class="seeker-container">
             <input
               type="range"
@@ -395,7 +394,7 @@
             />
             <div class="slider-progress"></div>
           </div>
-          <div>2:34</div>
+          <div id="duration">0:00</div>
         </div>
 
         <!-------------PLAYER OPTIONS-------------------->

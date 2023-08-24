@@ -2,11 +2,13 @@ console.log("Hello Listeners!");
 
 //Intialized Variables
 let songIndex = 0;
-let audioElement = new Audio("./assets/audio/Cartoon - On & On.mp3");
+let audioElement = new Audio("./assets/audio/Cartoon - Why We Lose.mp3");
 let playButton = document.getElementById("play");
 let pauseButton = document.getElementById("pause");
 let playingGif = document.getElementById("playing-gif");
 let audioSeeker = document.getElementById("seeker");
+let audioProgress = document.querySelector(".slider-progress");
+let audioProgressUpdate = 0;
 
 //Populate Songs LIst
 // Songs List
@@ -79,16 +81,19 @@ playButton.addEventListener("click", (e) => {
 
 // Listen to timeupdate
 audioElement.addEventListener("timeupdate", (e) => {
-  console.log("timeupdate");
-});
 
+  audioSeeker.value = parseInt((audioElement.currentTime / audioElement.duration) * 100); 
+  audioProgress.style.width = `${audioSeeker.value}%`;
+  document.getElementById('current-time').innerText= parseInt(audioElement.currentTime);
+  document.getElementById('duration').innerText= parseInt(audioElement.duration);
+});
 
 /* Slider Progress updater */
 
 //Seeker Progress
-audioSeeker.addEventListener('input', (e) => {
-    let widthProgress = parseInt((audioSeeker.value * 100)/100);
+audioSeeker.addEventListener("input", (e) => {
+  let widthProgress = parseInt((audioSeeker.value * 100) / 100);
+  audioProgress.style.width = `${widthProgress}%`;
+});
 
-    document.querySelector(".slider-progress").style.width = `${widthProgress}%`;
 
-})

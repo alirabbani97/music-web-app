@@ -61,7 +61,10 @@ section.browsing {
 }
 
 .playlist {
-  margin: 25px 0 0 25px;
+  margin: 4vh 5vw 0 0;
+}
+.playlist.tab-name {
+  margin-left: 2vw;
 }
 
 /************* PLAYLIST TABS ******************/
@@ -73,6 +76,7 @@ section.browsing {
 
 .playlist.tabs .circle {
   margin-right: 20px;
+  margin-left: 2vw;
   width: 8px;
 }
 
@@ -96,12 +100,12 @@ section.browsing {
 /************* PLAYLIST LIST ******************/
 
 .playlist.list {
-  margin-top: 50px;
+  margin-top: px;
   margin-right: 25px;
   display: flex;
   flex-direction: column;
-  row-gap: 1.5rem;
-  width: fit-content;
+  row-gap: 1rem;
+  width: 100%;
 }
 
 /************* SONG CARDS ******************/
@@ -114,23 +118,20 @@ section.browsing {
   column-gap: 15px;
   font-size: 0.8rem;
   position: relative;
-  width: 300px;
+  width: 100%;
   min-width: fit-content;
   cursor: pointer;
-  
 }
-.song-card:hover{
+.song-card:hover {
   background-color: #61627a50;
-  border-radius: 5px;
 }
 
-.song-card:focus{
+.song-card:focus {
   background-color: #61627a50;
-  border-radius: 5px;
 }
 .song-number {
   color: var(--font-secondary);
-  margin-left:15px ;
+  margin-left: 2vw;
 }
 
 .song-img {
@@ -148,7 +149,7 @@ section.browsing {
 }
 
 .song .song-name {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: whitesmoke;
 }
 
@@ -214,15 +215,12 @@ nav ul {
   height: 50px;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 5vw;
-  position: relative;
-}
+  margin: 0 10px ;
+ }
 
 .account-icon a img {
   width: 50px;
-  position: relative;
-  top: -3px;
-  scale: 1.3;
+  scale: 1;
 }
 
 /*************
@@ -355,7 +353,7 @@ PLAYER BAR
   mix-blend-mode: lighten;
   margin-left: 20px;
   opacity: 0;
-  transition: 0.5s ease-in ;
+  transition: 0.5s ease-in;
 }
 
 .playerbar .song-thumb {
@@ -381,12 +379,6 @@ PLAYER BAR
 .player.buttons #play {
   width: 20px;
 }
-/* .player.buttons #pause {
-  width: 20px;
-  position: absolute;
-  left: 35px;
-  display: none;
-} */
 
 .player.buttons #play:hover {
   cursor: pointer;
@@ -402,8 +394,7 @@ PLAYER BAR
   position: relative;
 }
 
-
-.player-seeker .seeker-container{
+.player-seeker .seeker-container {
   display: flex;
   width: 100%;
   position: relative;
@@ -419,15 +410,12 @@ PLAYER BAR
   background: var(--font-secondary); /* Grey background */
   outline: none; /* Remove outline */
   position: relative;
- 
 }
-.slider-progress{
-
+.slider-progress {
   position: absolute;
   height: 2px; /* Specified height */
-  background: var(--font-tertiary); 
+  background: var(--font-tertiary);
   width: 0; /* Full-width */
-
 }
 #seeker::-webkit-slider-thumb {
   -webkit-appearance: none;
