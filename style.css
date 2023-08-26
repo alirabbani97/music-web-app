@@ -325,12 +325,10 @@ PLAYER BAR
   bottom: 0;
   width: 100vw;
   box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.1);
-  column-gap: 3vw;
+  column-gap: 1vw;
   padding: 20px 0;
 }
 .player {
-  min-width: fit-content;
-  min-width: fit-content;
   display: flex;
   align-items: center;
   font-size: 0.8rem;
@@ -342,11 +340,14 @@ PLAYER BAR
 
 .player.details {
   position: relative;
-  width: fit-content;
+  width: 20vw;
+  margin-left:2vw;
+  min-width: fit-content;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-size: 0.8rem;
+ 
 }
 
 .player .equalizer-gif {
@@ -395,6 +396,7 @@ PLAYER BAR
   align-items: center;
   justify-content: space-between;
   position: relative;
+  
 }
 
 .player-seeker .seeker-container {
@@ -444,10 +446,12 @@ PLAYER BAR
 }
 
 /**************PLAYER VOLUME**************/
+ .player.volume{
+  margin-right: 3vw;
 
+ }
 #slider {
-  margin-right: 20px;
-
+ 
   height: 3px;
   width: 100%;
   max-width: 100px;
