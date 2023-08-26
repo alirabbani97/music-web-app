@@ -245,7 +245,7 @@ volumeIcon.addEventListener("click", () => {
     volumeIcon.src = "./svg/volume-mute.png";
     isMuted = !isMuted
   }else{
-    audioElement.volume = 1;
+    audioElement.volume = volumeSelected/100;
     volumeSlider.value = volumeSelected;
     volumeIcon.src = "./svg/volume-full.png";
     isMuted = !isMuted
