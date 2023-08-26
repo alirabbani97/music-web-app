@@ -89,7 +89,7 @@ section.browsing {
   font-size: 0.9rem;
   margin-bottom: 6px;
 }
-.playlist.tabs li.active {
+.playlist.tabs li.tab-active {
   color: var(--hover-col);
 }
 
@@ -123,16 +123,11 @@ section.browsing {
   min-width: fit-content;
   cursor: pointer;
 }
-.song-card .active {
-  background-color: #61627a50;
-}
-.song-card:hover {
+
+.active, .song-card:hover {
   background-color: #61627a50;
 }
 
-.song-card:focus {
-  background-color: #61627a50;
-}
 .song-number {
   color: var(--font-secondary);
   margin-left: 2vw;
@@ -171,9 +166,8 @@ section .catalog {
   background-image: linear-gradient(to top, #101727 30%, #00d3eb 150%);
   overflow-y: auto;
   overflow-x: hidden;
-  
 }
-section .catalog::-webkit-scrollbar{
+section .catalog::-webkit-scrollbar {
   appearance: none;
 }
 /************* Nav bar *****************/
@@ -221,8 +215,8 @@ nav ul {
   height: 50px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 10px ;
- }
+  margin: 0 10px;
+}
 
 .account-icon a img {
   width: 50px;
@@ -387,8 +381,10 @@ PLAYER BAR
   width: 20px;
 }
 
-.player.buttons #play:hover {
+.player.buttons :hover {
   cursor: pointer;
+  scale: 1.1;
+  transition: 0.2s ease-out;
 }
 
 /**************PLAYER SEEKER**************/

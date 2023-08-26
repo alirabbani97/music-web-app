@@ -3,14 +3,19 @@ console.log("Hello Listeners!");
 //Intialized Variables
 let songIndex = 0;
 let audioElement = new Audio("./assets/audio/Cartoon - Why We Lose.mp3");
-let playButton = document.getElementById("play");
-let pauseButton = document.getElementById("pause");
 let playingGif = document.getElementById("playing-gif");
+
+//Seeker Variables
 let audioSeeker = document.getElementById("seeker");
 let audioProgress = document.querySelector(".slider-progress");
 let audioProgressUpdate = 0;
 
-//Populate Songs LIst
+//Player Buttons init Variable
+const playButton = document.getElementById("play");
+const pauseButton = document.getElementById("pause");
+const nextSong = document.getElementById("next-song");
+const prevSong = document.getElementById("previous-song");
+
 // Songs List
 let songs = [
   {
@@ -71,8 +76,10 @@ let songs = [
   },
 ];
 
-//Playlist Populator and Play from Playlist
+//Playlist initialize variable
 playlist = Array.from(document.getElementsByClassName("song-card"));
+
+//Playlist Populator
 playlist.forEach((element, i) => {
   element.querySelector("#coverImage").src = songs[i].coverPath;
   element.querySelector(".song-number").innerText = songs[i].songId;
@@ -89,11 +96,22 @@ playlist.forEach((element, i) => {
     document.querySelector("#coverImagePlayer").src = songs[index].coverPath;
   }
 
+  //Make Playlist song card active
+  function activeMaker(arrayElement) {
+    for (var i = 0; i < arrayElement.length; i++) {
+      arrayElement[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  }
+
   // Songs play from playlist
-  playlist[i].addEventListener("click", (e) => {
+  playlist[i].addEventListener("click", () => {
     if (audioElement.paused) {
       playerDetailsUpdate(i);
-      playlist[i].classList.add = " .active";
+      activeMaker(playlist);
       playButton.src = "./svg/pause.png";
       audioElement.src = songs[i].filePath;
       audioElement.play();
@@ -101,6 +119,7 @@ playlist.forEach((element, i) => {
       anotherPlaying = true;
     } else {
       playerDetailsUpdate(i);
+      activeMaker(playlist);
       audioSeeker.value = 0;
       audioElement.pause();
       audioElement.src = songs[i].filePath;
@@ -108,9 +127,9 @@ playlist.forEach((element, i) => {
     }
   });
 });
+/*************** Playing Controls *****************/
 
-//Playing Controls
-
+// Play/Pause Controls
 playButton.addEventListener("click", (e) => {
   if (audioElement.paused) {
     playButton.src = "./svg/pause.png";
@@ -120,6 +139,26 @@ playButton.addEventListener("click", (e) => {
     playButton.src = "./svg/play.png";
     audioElement.pause();
     playingGif.style.opacity = 0;
+  }
+});
+
+//Next Song button
+nextSong.addEventListener("click", (playlist) => {
+  if (audioElement.paused) {
+    playerDetailsUpdate(playlist[i]);
+    activeMaker(playlist);
+    playButton.src = "./svg/pause.png";
+    audioElement.src = songs[i + 1].filePath;
+    audioElement.play();
+    playingGif.style.opacity = 1;
+    anotherPlaying = true;
+  } else {
+    playerDetailsUpdate(i);
+    activeMaker(playlist);
+    audioSeeker.value = 0;
+    audioElement.pause();
+    audioElement.src = songs[i].filePath;
+    audioElement.play();
   }
 });
 
