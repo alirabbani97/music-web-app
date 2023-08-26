@@ -1,4 +1,4 @@
-console.log("Hello Listeners!");
+console.log("Hello");
 
 //Intialized Variables
 let songIndex = 0;
