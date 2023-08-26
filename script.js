@@ -126,15 +126,16 @@ let playlist = Array.from(document.getElementsByClassName("song-card"));
 function playLogic(playlistArr, songindex) {
   playerDetailsUpdate(songindex);
   activeMaker(playlistArr);
+  songFile = songs[songindex].filePath;
+  audioElement.src = songFile;
+
   if (audioElement.paused) {
     playButton.src = "./svg/pause.png";
-    audioElement.src = songs[songindex].filePath;
     audioElement.play();
     playingGif.style.opacity = 1;
   } else {
     audioSeeker.value = 0;
     audioElement.pause();
-    audioElement.src = songs[songindex].filePath;
     audioElement.play();
   }
 }
@@ -221,6 +222,7 @@ audioSeeker.addEventListener("change", (e) => {
 
 audioElement.volume = 1;
 let volumeSelected;
+let isMuted = false;
 
 volumeSlider.addEventListener("change", () => {
   audioElement.volume = volumeSlider.value / 100;
@@ -235,8 +237,6 @@ volumeSlider.addEventListener("change", () => {
 });
 
 // Volume Icon mute
-
-let isMuted = false;
 
 volumeIcon.addEventListener("click", () => {
   if (!isMuted) {
