@@ -452,7 +452,6 @@
               id="coverImagePlayer"
               src="./assets/covers/whywelose.jpg"
               alt="thumbnail of song"
-              
             />
           </div>
 
@@ -478,7 +477,7 @@
         <!-------------Seeker-------------------->
 
         <div class="player-seeker">
-          <div id="current-time">0:00</div>
+          <div id="current-time">00:00</div>
           <div class="seeker-container">
             <input
               type="range"
@@ -490,7 +489,7 @@
             />
             <div class="slider-progress"></div>
           </div>
-          <div id="duration">0:00</div>
+          <div id="duration">00:00</div>
         </div>
 
         <!-------------PLAYER OPTIONS-------------------->
@@ -499,10 +498,12 @@
           <img id="shuffle" class="btn" src="./svg/arrows-cross.png" alt="" />
           <img id="repeat" class="btn" src="./svg/arrows-repeat.png" alt="" />
         </div>
-        <div class="player volume">
-          <img id="volume" class="btn" src="./svg/volume-full.png" alt="" />
 
-          <input type="range" min="1" max="100" value="50" id="slider" />
+        <!-------------PLAYER VOLUME-------------------->
+
+        <div class="player volume">
+          <img id="volume-icon" class="btn" src="./svg/volume-full.png" alt="" />
+          <input type="range" min="0" max="100" value="100" id="volume-slider" />
         </div>
       </section>
     </main>

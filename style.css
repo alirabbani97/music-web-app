@@ -235,7 +235,7 @@ CATALOG CONTAINER
   display: flex;
   flex-direction: column;
   margin: 3vh 5vw 0;
-  row-gap: 2rem;
+  row-gap: 3rem;
   height: 100%;
 }
 
@@ -437,6 +437,12 @@ PLAYER BAR
   );
   cursor: pointer; /* Cursor on hover */
 }
+#duration, #current-time{
+  width: 70px;
+  text-align: center;
+  margin: 5px 0;
+}
+
 
 /**************PLAYER OPTIONS**************/
 
@@ -450,11 +456,10 @@ PLAYER BAR
   margin-right: 3vw;
 
  }
-#slider {
+#volume-slider {
  
   height: 3px;
   width: 100%;
-  max-width: 100px;
   background-color: var(--font-secondary);
 }
 #slider::-webkit-slider-thumb {
@@ -469,4 +474,9 @@ PLAYER BAR
 .player.volume .btn {
   width: 15px;
   margin-right: 10px;
+  cursor: pointer;
+}
+.player.volume .btn:hover {
+  scale: 1.1;
+  transition: 0.2s ease-out;
 }

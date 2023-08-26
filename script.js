@@ -16,6 +16,10 @@ const pauseButton = document.getElementById("pause");
 const nextSong = document.getElementById("next-song");
 const prevSong = document.getElementById("previous-song");
 
+//Volume slider Variables
+const volumeSlider = document.getElementById("volume-slider");
+const volumeIcon = document.getElementById("volume-icon");
+
 // Songs List
 let songs = [
   {
@@ -76,6 +80,36 @@ let songs = [
   },
 ];
 
+// Listen to timeupdate
+audioElement.addEventListener("timeupdate", () => {
+  if (audioElement.currentTime == audioElement.duration) {
+    playButton.src = "./svg/play.png";
+    audioElement.pause();
+    playingGif.style.opacity = 0;
+    audioSeeker.value = 0;
+  }
+  // Progress bar Updater
+  audioSeeker.value = parseInt(
+    (audioElement.currentTime / audioElement.duration) * 100
+  );
+  audioProgress.style.width = `${audioSeeker.value}%`;
+
+  // Music elapsed Time
+
+  document.getElementById("current-time").innerText = new Date(
+    audioElement.currentTime * 1000
+  )
+    .toISOString()
+    .substring(14, 19);
+  // Music Duration Time
+
+  document.getElementById("duration").innerText = new Date(
+    audioElement.duration * 1000
+  )
+    .toISOString()
+    .substring(14, 19);
+});
+
 //Song index Resetter
 function songIndexReset() {
   if (songIndex > songs.length - 1) {
@@ -115,7 +149,7 @@ playlist.forEach((element, i) => {
   // Songs play from playlist
   playlist[i].addEventListener("click", () => {
     songIndex = parseInt(songs[i].songId);
-    playLogic(playlist, songIndex)
+    playLogic(playlist, songIndex);
   });
 });
 
@@ -157,8 +191,7 @@ nextSong.addEventListener("click", () => {
   songIndex++;
   songIndexReset();
   console.log(songIndex);
-  playLogic(playlist, songIndex)
-
+  playLogic(playlist, songIndex);
 });
 
 //Previous Song button
@@ -166,37 +199,10 @@ prevSong.addEventListener("click", () => {
   songIndex--;
   songIndexReset();
   console.log(songIndex);
-  playLogic(playlist, songIndex)
+  playLogic(playlist, songIndex);
 });
 
-// Listen to timeupdate
-audioElement.addEventListener("timeupdate", () => {
-  if (audioElement.currentTime == audioElement.duration) {
-    playButton.src = "./svg/play.png";
-    audioElement.pause();
-    playingGif.style.opacity = 0;
-    audioSeeker.value = 0;
-  }
-  // Progress bar Updater
-  audioSeeker.value = parseInt(
-    (audioElement.currentTime / audioElement.duration) * 100
-  );
-  audioProgress.style.width = `${audioSeeker.value}%`;
-
-  // Music elapsed Time
-
-  document.getElementById("current-time").innerText = parseInt(
-    audioElement.currentTime
-  );
-
-  // Music Duration Time
-
-  document.getElementById("duration").innerText = parseInt(
-    audioElement.duration
-  );
-});
-
-/* Slider Progress updater */
+/*********  Slider Progress updater ************/
 
 //Seeker Progress
 audioSeeker.addEventListener("input", (e) => {
@@ -209,4 +215,39 @@ audioSeeker.addEventListener("change", (e) => {
   audioElement.currentTime = parseInt(
     (audioSeeker.value * audioElement.duration) / 100
   );
+});
+
+/*********  Volume Slider Functionality ************/
+
+audioElement.volume = 1;
+let volumeSelected;
+
+volumeSlider.addEventListener("change", () => {
+  audioElement.volume = volumeSlider.value / 100;
+  volumeSelected = volumeSlider.value;
+  if (audioElement.volume == 0) {
+    volumeIcon.src = "./svg/volume-mute.png";
+    isMuted = true;
+  } else {
+    volumeIcon.src = "./svg/volume-full.png";
+    isMuted = false;
+  }
+});
+
+// Volume Icon mute
+
+let isMuted = false;
+
+volumeIcon.addEventListener("click", () => {
+  if (!isMuted) {
+    audioElement.volume = 0;
+    volumeSlider.value = 0;
+    volumeIcon.src = "./svg/volume-mute.png";
+    isMuted = !isMuted
+  }else{
+    audioElement.volume = 1;
+    volumeSlider.value = volumeSelected;
+    volumeIcon.src = "./svg/volume-full.png";
+    isMuted = !isMuted
+  }
 });
