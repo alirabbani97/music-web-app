@@ -23,61 +23,61 @@ let songs = [
     artistName: "Cartoon",
     filePath: "./assets/audio/Cartoon - On & On.mp3",
     coverPath: "./assets/covers/cartoon-on&on.jpg",
-    songId: "01",
+    songId: "0",
   },
   {
     songName: "Why We Lose",
     artistName: "Cartoon",
     filePath: "./assets/audio/Cartoon - Why We Lose.mp3",
     coverPath: "./assets/covers/whywelose.jpg",
-    songId: "02",
+    songId: "1",
   },
   {
     songName: "invincible",
     artistName: "DEAFKEV",
     filePath: "./assets/audio/DEAFKEV - Invincible.mp3",
     coverPath: "./assets/covers/deafkev-invincible.jpg",
-    songId: "03",
+    songId: "2",
   },
   {
     songName: "Blank",
     artistName: "Disfigure",
     filePath: "./assets/audio/Disfigure - Blank.mp3",
     coverPath: "./assets/covers/Blank-alt.webp",
-    songId: "04",
+    songId: "3",
   },
   {
     songName: "Sky High",
     artistName: "Elektronomia",
     filePath: "./assets/audio/Elektronomia - Sky High.mp3",
     coverPath: "./assets/covers/skyhigh.jpg",
-    songId: "05",
+    songId: "4",
   },
   {
     songName: "Heroes Tonight",
     artistName: "Janji",
     filePath: "./assets/audio/Janji - Heroes Tonight.mp3",
     coverPath: "./assets/covers/hereostonight.jpg",
-    songId: "06",
+    songId: "5",
   },
   {
     songName: "Cradles",
     artistName: "Sub Urban",
     filePath: "./assets/audio/Sub Urban - Cradles.mp3",
     coverPath: "./assets/covers/cradles.jpg",
-    songId: "07",
+    songId: "6",
   },
   {
     songName: "Mortals",
     artistName: "Warriyo",
     filePath: "./assets/audio/Warriyo - Mortals.mp3",
     coverPath: "./assets/covers/mortals.jpg",
-    songId: "08",
+    songId: "7",
   },
 ];
 
 //Playlist initialize variable
-playlist = Array.from(document.getElementsByClassName("song-card"));
+let playlist = Array.from(document.getElementsByClassName("song-card"));
 
 //Playlist Populator
 playlist.forEach((element, i) => {
@@ -85,8 +85,6 @@ playlist.forEach((element, i) => {
   element.querySelector(".song-number").innerText = songs[i].songId;
   element.querySelector(".song-name").innerText = songs[i].songName;
   element.querySelector(".artist-name").innerText = songs[i].artistName;
-
-  //player bar details updater
 
   function playerDetailsUpdate(index) {
     document.querySelector(".song-name.player").innerText =
@@ -113,20 +111,24 @@ playlist.forEach((element, i) => {
       playerDetailsUpdate(i);
       activeMaker(playlist);
       playButton.src = "./svg/pause.png";
+      songIndex = songs[i].songId;
       audioElement.src = songs[i].filePath;
       audioElement.play();
       playingGif.style.opacity = 1;
-      anotherPlaying = true;
     } else {
       playerDetailsUpdate(i);
       activeMaker(playlist);
       audioSeeker.value = 0;
       audioElement.pause();
+      songIndex = songs[i].songId;
       audioElement.src = songs[i].filePath;
       audioElement.play();
     }
   });
 });
+
+//player bar details updater
+
 /*************** Playing Controls *****************/
 
 // Play/Pause Controls
@@ -143,23 +145,26 @@ playButton.addEventListener("click", (e) => {
 });
 
 //Next Song button
-nextSong.addEventListener("click", (playlist) => {
-  if (audioElement.paused) {
-    playerDetailsUpdate(playlist[i]);
-    activeMaker(playlist);
-    playButton.src = "./svg/pause.png";
-    audioElement.src = songs[i + 1].filePath;
-    audioElement.play();
-    playingGif.style.opacity = 1;
-    anotherPlaying = true;
-  } else {
-    playerDetailsUpdate(i);
-    activeMaker(playlist);
-    audioSeeker.value = 0;
-    audioElement.pause();
-    audioElement.src = songs[i].filePath;
-    audioElement.play();
-  }
+playlist.forEach((element, i) => {
+  element.querySelector("#coverImage").src = songs[i].coverPath;
+  element.querySelector(".song-number").innerText = songs[i].songId;
+  element.querySelector(".song-name").innerText = songs[i].songName;
+  element.querySelector(".artist-name").innerText = songs[i].artistName;
+
+  nextSong.addEventListener("click", (i) => {
+    songIndex++
+    if (audioElement.paused) {
+      playButton.src = "./svg/pause.png";
+      audioElement.src = songs[songIndex].filePath;
+      audioElement.play();
+      playingGif.style.opacity = 1;
+    } else {
+      audioSeeker.value = 0;
+      audioElement.pause();
+      audioElement.src = songs[songIndex].filePath;
+      audioElement.play();
+    }
+  });
 });
 
 // Listen to timeupdate
