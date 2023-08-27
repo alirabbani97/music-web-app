@@ -124,7 +124,8 @@ section.browsing {
   cursor: pointer;
 }
 
-.active, .song-card:hover {
+.active,
+.song-card:hover {
   background-color: #61627a50;
 }
 
@@ -320,7 +321,7 @@ PLAYER BAR
   display: flex;
   justify-content: space-between;
   background-color: var(--back-color);
-  height: 500x;
+  height: 500px;
   position: sticky;
   bottom: 0;
   width: 100vw;
@@ -341,13 +342,12 @@ PLAYER BAR
 .player.details {
   position: relative;
   width: 20vw;
-  margin-left:2vw;
+  margin-left: 2vw;
   min-width: fit-content;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   font-size: 0.8rem;
- 
 }
 
 .player .equalizer-gif {
@@ -396,7 +396,6 @@ PLAYER BAR
   align-items: center;
   justify-content: space-between;
   position: relative;
-  
 }
 
 .player-seeker .seeker-container {
@@ -437,12 +436,12 @@ PLAYER BAR
   );
   cursor: pointer; /* Cursor on hover */
 }
-#duration, #current-time{
+#duration,
+#current-time {
   width: 70px;
   text-align: center;
   margin: 5px 0;
 }
-
 
 /**************PLAYER OPTIONS**************/
 
@@ -452,12 +451,10 @@ PLAYER BAR
 }
 
 /**************PLAYER VOLUME**************/
- .player.volume{
+.player.volume {
   margin-right: 3vw;
-
- }
+}
 #volume-slider {
- 
   height: 3px;
   width: 100%;
   background-color: var(--font-secondary);
@@ -479,4 +476,48 @@ PLAYER BAR
 .player.volume .btn:hover {
   scale: 1.1;
   transition: 0.2s ease-out;
+}
+
+/* for mobile screens */
+
+@media screen and (max-width: 480px) {
+  section .catalog {
+    display: none;
+  }
+  .playlist-bar {
+    flex-basis: 100vw;
+
+  }
+  .playerbar {
+    height: 500px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .player.details {
+    position: relative;
+    width: 20vw;
+    margin-left: 2vw;
+    min-width: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 0.8rem;
+  }
+  .player-seeker {
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .player.buttons {
+    width: fit-content;
+    position: relative;
+    top:30px
+  }
+  .player.volume {
+    margin-right: 3vw;
+  }
 }
