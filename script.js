@@ -5,7 +5,7 @@ let songIndex = 0;
 let audioElement = new Audio("./assets/audio/Cartoon - Why We Lose.mp3");
 let playingGif = document.getElementById("playing-gif");
 const popularArtistCarousel = document.querySelector('.popular-artists-carousel.carousel')
-console.log(popularArtistCarousel)
+
 //Seeker Variables
 let audioSeeker = document.getElementById("seeker");
 let audioProgress = document.querySelector(".slider-progress");
@@ -96,7 +96,9 @@ let popularArtist = [
   { artistName: "Bappi Lahiri", imagePath: "./assets/img/artists/bappi.jpg" },
 ];
 
-//
+
+//Populate Popular Artist
+ document.createElement("")
 
 //Song index Resetter
 function songIndexReset() {
