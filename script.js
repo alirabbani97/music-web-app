@@ -4,7 +4,8 @@ console.log("Hello");
 let songIndex = 0;
 let audioElement = new Audio("./assets/audio/Cartoon - Why We Lose.mp3");
 let playingGif = document.getElementById("playing-gif");
-
+const popularArtistCarousel = document.querySelector('.popular-artists-carousel.carousel')
+console.log(popularArtistCarousel)
 //Seeker Variables
 let audioSeeker = document.getElementById("seeker");
 let audioProgress = document.querySelector(".slider-progress");
@@ -79,12 +80,23 @@ let songs = [
     songId: "7",
   },
 ];
-//Popular Artist List
 
+// Popular Album list
+let popularAlbums = [{ albumName: "", artistName: "", coverPath: "" }];
+//Popular Artist List
+let popularArtist = [
+  { artistName: "Bruno Mars", imagePath: "./assets/img/artists/bruno.jpg" },
+  { artistName: "Rihanna", imagePath: "./assets/img/artists/rihanna.jpg" },
+  { artistName: "Lady Gaga", imagePath: "./assets/img/artists/lady-gaga.webp" },
+  { artistName: "Beyonce", imagePath: "./assets/img/artists/beyonce.jpg" },
+  { artistName: "Coldplay", imagePath: "./assets/img/artists/coldplay.jpg" },
+  { artistName: "Tame Impala", imagePath: "./assets/img/artists/tame-impala.webp" },
+  { artistName: "Olivia Rodrigo", imagePath: "./assets/img/artists/olivia-rodrigo.jpg" },
+  { artistName: "Beatles", imagePath: "./assets/img/artists/beatles.jpg" },
+  { artistName: "Bappi Lahiri", imagePath: "./assets/img/artists/bappi.jpg" },
+];
 
 //
-
-
 
 //Song index Resetter
 function songIndexReset() {
@@ -220,12 +232,12 @@ volumeIcon.addEventListener("click", () => {
     audioElement.volume = 0;
     volumeSlider.value = 0;
     volumeIcon.src = "./svg/volume-mute.png";
-    isMuted = !isMuted
-  }else{
-    audioElement.volume = volumeSelected/100;
+    isMuted = !isMuted;
+  } else {
+    audioElement.volume = volumeSelected / 100;
     volumeSlider.value = volumeSelected;
     volumeIcon.src = "./svg/volume-full.png";
-    isMuted = !isMuted
+    isMuted = !isMuted;
   }
 });
 
