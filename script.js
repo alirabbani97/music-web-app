@@ -98,8 +98,8 @@ let popularArtist = [
 
 
 //Populate Popular Artist
- document.createElement("")
-
+ /* document.createElement("")
+ */
 //Song index Resetter
 function songIndexReset() {
   if (songIndex > songs.length - 1) {
