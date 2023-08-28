@@ -98,8 +98,18 @@ let popularArtist = [
 
 
 //Populate Popular Artist
- /* document.createElement("")
- */
+ artistCard = document.createElement("div");
+ artistCard.className = "artist card"
+ artistCard.innerHTML = `<div class= "artist-img"><a href="#"
+ ><img
+   src="${popularArtist[0].imagePath}"
+   alt=""
+   width="120px"
+/></a></div><h4>${popularArtist[0].artistName}</h4>`
+
+popularArtistCarousel.appendChild(artistCard);
+
+
 //Song index Resetter
 function songIndexReset() {
   if (songIndex > songs.length - 1) {
