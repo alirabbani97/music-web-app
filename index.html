@@ -7,7 +7,6 @@
 
     <link rel="stylesheet" href="./style.css" />
 
-    <script src="main.js" defer></script>
   </head>
 
   <body>
@@ -168,6 +167,7 @@
                     <p class="artist-name">Linkin Park</p>
                   </div>
                 </div>
+
                 <div class="song-card">
                   <p class="song song-number">01</p>
                   <div class="song-img">
@@ -233,7 +233,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/caribou.jpg"
@@ -244,7 +244,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/be.jpg"
@@ -255,7 +255,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/currents_grande.webp"
@@ -266,7 +266,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/eob.jpg"
@@ -277,7 +277,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/gia.jpg"
@@ -288,7 +288,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/imploding.jpg"
@@ -299,7 +299,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/lian.jpg"
@@ -310,7 +310,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/LinkinParkIntheEnd.jpg"
@@ -321,7 +321,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/modus.jpg"
@@ -332,7 +332,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/airbag.jpg"
@@ -343,7 +343,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/caribou.jpg"
@@ -354,7 +354,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/be.jpg"
@@ -365,7 +365,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/currents_grande.webp"
@@ -376,7 +376,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/eob.jpg"
@@ -387,7 +387,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/gia.jpg"
@@ -398,7 +398,7 @@
                   <h4>Album Name</h4>
                   <p>Artist Name</p>
                 </div>
-                <div class="album">
+                <div class="album card">
                   <a href="#"
                     ><img
                       src="./assets/img/imploding.jpg"
@@ -437,7 +437,8 @@
       <!-------------PLAYER BAR-------------------->
 
       <section class="playerbar">
-        <!-------------PLAYER THUMB-------------------->
+        <DIV class="playercontents">
+        <!-------------PLAYER DETAILS-------------------->
 
         <div class="player details">
           <img
@@ -461,7 +462,7 @@
           </div>
         </div>
 
-        <!-------------PLAYER BUTTONS-------------------->
+        <!-------------PLAYER CONTROLS-------------------->
 
         <div class="player buttons">
           <img
@@ -505,10 +506,13 @@
           <img id="volume-icon" class="btn" src="./svg/volume-full.png" alt="" />
           <input type="range" min="0" max="100" value="100" id="volume-slider" />
         </div>
+      </DIV>
       </section>
     </main>
 
-    <script type="module" src="/main.js"></script>
+    
   </body>
+<!--   <script type="module" src="main.js" defer></script>
+ -->
   <script src="script.js"></script>
 </html>

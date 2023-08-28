@@ -79,36 +79,12 @@ let songs = [
     songId: "7",
   },
 ];
+//Popular Artist List
 
-// Listen to timeupdate
-audioElement.addEventListener("timeupdate", () => {
-  if (audioElement.currentTime == audioElement.duration) {
-    playButton.src = "./svg/play.png";
-    audioElement.pause();
-    playingGif.style.opacity = 0;
-    audioSeeker.value = 0;
-  }
-  // Progress bar Updater
-  audioSeeker.value = parseInt(
-    (audioElement.currentTime / audioElement.duration) * 100
-  );
-  audioProgress.style.width = `${audioSeeker.value}%`;
 
-  // Music elapsed Time
+//
 
-  document.getElementById("current-time").innerText = new Date(
-    audioElement.currentTime * 1000
-  )
-    .toISOString()
-    .substring(14, 19);
-  // Music Duration Time
 
-  document.getElementById("duration").innerText = new Date(
-    audioElement.duration * 1000
-  )
-    .toISOString()
-    .substring(14, 19);
-});
 
 //Song index Resetter
 function songIndexReset() {
@@ -220,7 +196,8 @@ audioSeeker.addEventListener("change", (e) => {
 
 /*********  Volume Slider Functionality ************/
 
-audioElement.volume = 1;
+audioElement.volume = 0.3;
+volumeSlider.value = 30;
 let volumeSelected;
 let isMuted = false;
 
@@ -250,4 +227,34 @@ volumeIcon.addEventListener("click", () => {
     volumeIcon.src = "./svg/volume-full.png";
     isMuted = !isMuted
   }
+});
+
+// Listen to timeupdate
+audioElement.addEventListener("timeupdate", () => {
+  if (audioElement.currentTime == audioElement.duration) {
+    playButton.src = "./svg/play.png";
+    audioElement.pause();
+    playingGif.style.opacity = 0;
+    audioSeeker.value = 0;
+  }
+  // Progress bar Updater
+  audioSeeker.value = parseInt(
+    (audioElement.currentTime / audioElement.duration) * 100
+  );
+  audioProgress.style.width = `${audioSeeker.value}%`;
+
+  // Music elapsed Time
+
+  document.getElementById("current-time").innerText = new Date(
+    audioElement.currentTime * 1000
+  )
+    .toISOString()
+    .substring(14, 19);
+  // Music Duration Time
+
+  document.getElementById("duration").innerText = new Date(
+    audioElement.duration * 1000
+  )
+    .toISOString()
+    .substring(14, 19);
 });
