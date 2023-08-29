@@ -18,6 +18,8 @@ const playButton = document.getElementById("play");
 const pauseButton = document.getElementById("pause");
 const nextSong = document.getElementById("next-song");
 const prevSong = document.getElementById("previous-song");
+const shuffleBtn = document.getElementById('shuffle');
+const repeatBtn = document.getElementById('repeat');
 
 //Volume slider Variables
 const volumeSlider = document.getElementById("volume-slider");
@@ -102,10 +104,12 @@ let popularArtistList = [
   },
   { artistName: "Beatles", imagePath: "./assets/img/artists/beatles.jpg" },
   { artistName: "Bappi Lahiri", imagePath: "./assets/img/artists/bappi.jpg" },
+
 ];
 
 //Populate Popular Artist
 /* let artistId = 0; */
+
 let artistCardArr = [];
 
 for (i = 0; i < popularArtistList.length; i++) {
