@@ -24,18 +24,19 @@ body {
 }
 body {
   overflow: hidden;
+  height: 100%;
 }
 main {
   position: relative;
-  height: 100vh;
   overflow: hidden;
   display: flex;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
 }
 section.browsing {
   display: flex;
-  height: 100vh;
+  height: 100%;
   min-height: fit-content;
   width: 100vw;
   position: relative;
@@ -49,7 +50,7 @@ section.browsing {
 .playlist-bar {
   flex-basis: 400px;
   position: sticky;
-  height: 100vh;
+  height: 100%;
   min-height: fit-content;
   left: 0;
   display: flex;
@@ -109,15 +110,12 @@ section.browsing {
 /************* SONG CARDS ******************/
 
 .song-cards {
-  min-height: calc(100vh - 80px);
-  overflow: scroll; 
+  min-height: 100vh;
+  height: 10vh;
+  overflow: scroll;
 }
 .song-cards:active {
   cursor: grabbing;
-}
-.song-cards {
-  height: 10vh;
-  overflow: scroll;
 }
 
 .song-cards::-webkit-scrollbar {
@@ -302,6 +300,10 @@ div #banner-title {
 .popular-albums-carousel .album a img {
   border-radius: 1px;
   overflow: hidden;
+}
+.popular-artists-carousel{
+  column-gap: 2rem;
+
 }
 .artist {
   margin-top: 20px;
@@ -498,7 +500,15 @@ PLAYER BAR
   transition: 0.2s ease-out;
 }
 
+
+
+
+
 /* For medium screens */
+
+
+
+
 @media screen and (max-width: 700px) {
   .player {
     display: flex;
@@ -533,6 +543,10 @@ PLAYER BAR
 /* for mobile screens */
 
 @media screen and (max-width: 480px) {
+  main {
+    height: 100vh;
+    
+  }
   section .catalog {
     display: none;
   }
@@ -550,16 +564,13 @@ PLAYER BAR
     /*   border: 1px solid;
    */
   }
-  
+
   .playercontents {
-   
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: end;
     align-items: center;
     height: 130px;
     min-height: fit-content;
-
-   
   }
 
   .player.details {
@@ -576,7 +587,7 @@ PLAYER BAR
     position: relative;
     top: 55px;
     scale: 1.2;
-    z-index: 10; 
+    z-index: 10;
   }
   .player-seeker {
     width: 80vw;

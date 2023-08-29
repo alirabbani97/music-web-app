@@ -7,7 +7,6 @@ let playingGif = document.getElementById("playing-gif");
 const popularArtistListCarousel = document.querySelector(
   ".popular-artists-carousel.carousel"
 );
-let isShuffled = false;
 
 //Seeker Variables
 let audioSeeker = document.getElementById("seeker");
@@ -213,26 +212,33 @@ playButton.addEventListener("click", () => {
 });
 
 //Shuffle Function
-
-/* shuffleBtn.addEventListener("click", () => {
-  let songShuffled;
-  songShuffled = Math.floor(Math.random() * songs.length);
-  if (!isShuffled) {
-    songIndex= songShuffled;
-    isShuffled = true;
-    console.log(songIndex);
-  } else {
-    isShuffled = false;
-  }
-  console.log(isShuffled)
-  
-}); */
+let isShuffled = false;
 
 shuffleBtn.addEventListener("click", () => {
-  isShuffled = !isShuffled;
-  console.log(isShuffled);
+  if (!isShuffled) {
+    shuffleBtn.src = "./svg/arrows-cross.png";
+    isShuffled = !isShuffled;
+  } else {
+    shuffleBtn.src = "./svg/shuffle-off.png";
+    isShuffled = !isShuffled;
+  }
 });
-console.log(isShuffled);
+
+// Repeat all or one Function
+let isRepeatAll = true;
+
+repeatBtn.addEventListener("click", () => {
+  if (isRepeatAll) {
+    repeatBtn.src = "./svg/repeat-one.png";
+    isRepeatAll = !isRepeatAll;
+    console.log(`repeat ${isRepeatAll}`);
+  } else {
+    repeatBtn.src = "./svg/arrows-repeat.png";
+    isRepeatAll = !isRepeatAll;
+    console.log(`repeat ${isRepeatAll}`);
+  }
+});
+console.log(`repeat ${isRepeatAll}`);
 
 //Next Song button
 nextSong.addEventListener("click", () => {
@@ -309,11 +315,25 @@ volumeIcon.addEventListener("click", () => {
 
 // Listen to timeupdate
 audioElement.addEventListener("timeupdate", () => {
-  if (audioElement.currentTime == audioElement.duration) {
-    playButton.src = "./svg/play.png";
-    audioElement.pause();
-    playingGif.style.opacity = 0;
-    audioSeeker.value = 0;
+  if (
+    audioElement.currentTime == audioElement.duration &&
+    isRepeatAll == true &&
+    isShuffled == false
+  ) {
+    songIndex++;
+    songIndexReset();
+    playLogic(playlist, songIndex);
+  } else if (
+    audioElement.currentTime == audioElement.duration &&
+    isRepeatAll == true &&
+    isShuffled == true
+  ) {
+    let songShuffled;
+    songShuffled = Math.floor(Math.random() * songs.length);
+    songIndex = songShuffled;
+    playLogic(playlist, songIndex);
+  } else if (audioElement.currentTime == audioElement.duration) {
+    playLogic(playlist, songIndex);
   }
 
   // Progress bar Updater
