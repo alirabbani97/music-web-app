@@ -7,6 +7,7 @@ let playingGif = document.getElementById("playing-gif");
 const popularArtistListCarousel = document.querySelector(
   ".popular-artists-carousel.carousel"
 );
+let isShuffled = false;
 
 //Seeker Variables
 let audioSeeker = document.getElementById("seeker");
@@ -18,8 +19,8 @@ const playButton = document.getElementById("play");
 const pauseButton = document.getElementById("pause");
 const nextSong = document.getElementById("next-song");
 const prevSong = document.getElementById("previous-song");
-const shuffleBtn = document.getElementById('shuffle');
-const repeatBtn = document.getElementById('repeat');
+const shuffleBtn = document.getElementById("shuffle");
+const repeatBtn = document.getElementById("repeat");
 
 //Volume slider Variables
 const volumeSlider = document.getElementById("volume-slider");
@@ -104,7 +105,10 @@ let popularArtistList = [
   },
   { artistName: "Beatles", imagePath: "./assets/img/artists/beatles.jpg" },
   { artistName: "Bappi Lahiri", imagePath: "./assets/img/artists/bappi.jpg" },
-
+  { artistName: "Bruno Mars", imagePath: "./assets/img/artists/bruno.jpg" },
+  { artistName: "Rihanna", imagePath: "./assets/img/artists/rihanna.jpg" },
+  { artistName: "Lady Gaga", imagePath: "./assets/img/artists/lady-gaga.webp" },
+  { artistName: "Beyonce", imagePath: "./assets/img/artists/beyonce.jpg" },
 ];
 
 //Populate Popular Artist
@@ -115,7 +119,9 @@ let artistCardArr = [];
 for (i = 0; i < popularArtistList.length; i++) {
   let artistCard = document.createElement("div");
   artistCard.className = "artist card";
-  artistCard.innerHTML = `<div class= "artist-img" id = "artist${[i]}"><a href="#"
+  artistCard.innerHTML = `<div class= "artist-img" id = "artist${[
+    i,
+  ]}"><a href="#"
  ><img
    src="${popularArtistList[i].imagePath}"
    alt="a picture of ${popularArtistList[i].artistName}"
@@ -127,17 +133,6 @@ for (i = 0; i < popularArtistList.length; i++) {
 }
 console.log(artistCardArr);
 
-/* artistCard = document.createElement("div");
-artistCard.className = "artist card";
-artistCard.innerHTML = `<div class= "artist-img"><a href="#"
- ><img
-   src="${popularArtistList[0].imagePath}"
-   alt=""
-   width="120px"
-/></a></div><h4>${popularArtistList[0].artistName}</h4>`;
-  console.log(artistCard)
- popularArtistListCarousel.appendChild(artistCard);
- */
 //Song index Resetter
 function songIndexReset() {
   if (songIndex > songs.length - 1) {
@@ -150,7 +145,8 @@ function songIndexReset() {
 //Playlist initialize variable
 let playlist = Array.from(document.getElementsByClassName("song-card"));
 
-// Playing Logic
+/**** Playing Logic *****/
+
 function playLogic(playlistArr, songindex) {
   playerDetailsUpdate(songindex);
   activeMaker(playlistArr);
@@ -171,7 +167,8 @@ function playLogic(playlistArr, songindex) {
 //Playlist Populator
 playlist.forEach((element, i) => {
   element.querySelector("#coverImage").src = songs[i].coverPath;
-  element.querySelector(".song-number").innerText = songs[i].songId;
+  element.querySelector(".song-number").innerText =
+    parseInt(songs[i].songId) + 1;
   element.querySelector(".song-name").innerText = songs[i].songName;
   element.querySelector(".artist-name").innerText = songs[i].artistName;
 
@@ -215,19 +212,49 @@ playButton.addEventListener("click", () => {
   }
 });
 
+//Shuffle Function
+
+/* shuffleBtn.addEventListener("click", () => {
+  let songShuffled;
+  songShuffled = Math.floor(Math.random() * songs.length);
+  if (!isShuffled) {
+    songIndex= songShuffled;
+    isShuffled = true;
+    console.log(songIndex);
+  } else {
+    isShuffled = false;
+  }
+  console.log(isShuffled)
+  
+}); */
+
+shuffleBtn.addEventListener("click", () => {
+  isShuffled = !isShuffled;
+  console.log(isShuffled);
+});
+console.log(isShuffled);
+
 //Next Song button
 nextSong.addEventListener("click", () => {
+  if (isShuffled) {
+    let songShuffled;
+    songShuffled = Math.floor(Math.random() * songs.length);
+    songIndex = songShuffled;
+  }
   songIndex++;
   songIndexReset();
-  console.log(songIndex);
   playLogic(playlist, songIndex);
 });
 
 //Previous Song button
 prevSong.addEventListener("click", () => {
+  if (isShuffled) {
+    let songShuffled;
+    songShuffled = Math.floor(Math.random() * songs.length);
+    songIndex = songShuffled;
+  }
   songIndex--;
   songIndexReset();
-  console.log(songIndex);
   playLogic(playlist, songIndex);
 });
 
@@ -266,7 +293,6 @@ volumeSlider.addEventListener("change", () => {
 });
 
 // Volume Icon mute
-
 volumeIcon.addEventListener("click", () => {
   if (!isMuted) {
     audioElement.volume = 0;
@@ -289,6 +315,7 @@ audioElement.addEventListener("timeupdate", () => {
     playingGif.style.opacity = 0;
     audioSeeker.value = 0;
   }
+
   // Progress bar Updater
   audioSeeker.value = parseInt(
     (audioElement.currentTime / audioElement.duration) * 100
@@ -296,14 +323,13 @@ audioElement.addEventListener("timeupdate", () => {
   audioProgress.style.width = `${audioSeeker.value}%`;
 
   // Music elapsed Time
-
   document.getElementById("current-time").innerText = new Date(
     audioElement.currentTime * 1000
   )
     .toISOString()
     .substring(14, 19);
-  // Music Duration Time
 
+  // Music Duration Time
   document.getElementById("duration").innerText = new Date(
     audioElement.duration * 1000
   )
