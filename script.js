@@ -4,7 +4,9 @@ console.log("Hello");
 let songIndex = 0;
 let audioElement = new Audio("./assets/audio/Cartoon - Why We Lose.mp3");
 let playingGif = document.getElementById("playing-gif");
-const popularArtistCarousel = document.querySelector('.popular-artists-carousel.carousel')
+const popularArtistListCarousel = document.querySelector(
+  ".popular-artists-carousel.carousel"
+);
 
 //Seeker Variables
 let audioSeeker = document.getElementById("seeker");
@@ -82,34 +84,56 @@ let songs = [
 ];
 
 // Popular Album list
-let popularAlbums = [{ albumName: "", artistName: "", coverPath: "" }];
+let popularAlbumsList = [{ albumName: "", artistName: "", coverPath: "" }];
 //Popular Artist List
-let popularArtist = [
+let popularArtistList = [
   { artistName: "Bruno Mars", imagePath: "./assets/img/artists/bruno.jpg" },
   { artistName: "Rihanna", imagePath: "./assets/img/artists/rihanna.jpg" },
   { artistName: "Lady Gaga", imagePath: "./assets/img/artists/lady-gaga.webp" },
   { artistName: "Beyonce", imagePath: "./assets/img/artists/beyonce.jpg" },
   { artistName: "Coldplay", imagePath: "./assets/img/artists/coldplay.jpg" },
-  { artistName: "Tame Impala", imagePath: "./assets/img/artists/tame-impala.webp" },
-  { artistName: "Olivia Rodrigo", imagePath: "./assets/img/artists/olivia-rodrigo.jpg" },
+  {
+    artistName: "Tame Impala",
+    imagePath: "./assets/img/artists/tame-impala.webp",
+  },
+  {
+    artistName: "Olivia Rodrigo",
+    imagePath: "./assets/img/artists/olivia-rodrigo.jpg",
+  },
   { artistName: "Beatles", imagePath: "./assets/img/artists/beatles.jpg" },
   { artistName: "Bappi Lahiri", imagePath: "./assets/img/artists/bappi.jpg" },
 ];
 
-
 //Populate Popular Artist
- artistCard = document.createElement("div");
- artistCard.className = "artist card"
- artistCard.innerHTML = `<div class= "artist-img"><a href="#"
+/* let artistId = 0; */
+let artistCardArr = [];
+
+for (i = 0; i < popularArtistList.length; i++) {
+  let artistCard = document.createElement("div");
+  artistCard.className = "artist card";
+  artistCard.innerHTML = `<div class= "artist-img" id = "artist${[i]}"><a href="#"
  ><img
-   src="${popularArtist[0].imagePath}"
+   src="${popularArtistList[i].imagePath}"
+   alt="a picture of ${popularArtistList[i].artistName}"
+   width="120px"
+/></a></div><h4>${popularArtistList[i].artistName}</h4>`;
+  artistCardArr.push(artistCard);
+
+  popularArtistListCarousel.appendChild(artistCardArr[i]);
+}
+console.log(artistCardArr);
+
+/* artistCard = document.createElement("div");
+artistCard.className = "artist card";
+artistCard.innerHTML = `<div class= "artist-img"><a href="#"
+ ><img
+   src="${popularArtistList[0].imagePath}"
    alt=""
    width="120px"
-/></a></div><h4>${popularArtist[0].artistName}</h4>`
-
-popularArtistCarousel.appendChild(artistCard);
-
-
+/></a></div><h4>${popularArtistList[0].artistName}</h4>`;
+  console.log(artistCard)
+ popularArtistListCarousel.appendChild(artistCard);
+ */
 //Song index Resetter
 function songIndexReset() {
   if (songIndex > songs.length - 1) {
