@@ -291,6 +291,7 @@ volumeSlider.addEventListener("change", () => {
   volumeSelected = volumeSlider.value;
   if (audioElement.volume == 0) {
     volumeIcon.src = "./svg/volume-mute.png";
+    volumeSelected = 30;
     isMuted = true;
   } else {
     volumeIcon.src = "./svg/volume-full.png";
@@ -343,16 +344,15 @@ audioElement.addEventListener("timeupdate", () => {
   audioProgress.style.width = `${audioSeeker.value}%`;
 
   // Music elapsed Time
-  document.getElementById("current-time").innerText = new Date(
+ /*  let cS = parseInt(audioElement.currentTime % 60);
+  let cM = parseInt((audioElement.currentTime / 60) % 60); 
+ document.getElementById("current-time").innerText = `${cM} : ${cS}` */
+ document.getElementById("current-time").innerText = new Date(
     audioElement.currentTime * 1000
-  )
-    .toISOString()
-    .substring(14, 19);
+  ).toISOString().substring(14, 19);
 
   // Music Duration Time
   document.getElementById("duration").innerText = new Date(
     audioElement.duration * 1000
-  )
-    .toISOString()
-    .substring(14, 19);
+  ).toISOString().substring(14, 19);
 });
