@@ -12,6 +12,11 @@ h3 {
   font-weight: 400;
 }
 
+html {
+    overflow: hidden;
+    width: 100%;
+  }
+
 *,
 body {
   margin: 0;
@@ -23,14 +28,15 @@ body {
   user-select: none;
 }
 body {
-  overflow: hidden;
+  overflow: scroll;
+  position: fixed;
   height: 100%;
 }
 main {
   position: relative;
   overflow: hidden;
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   align-items: center;
 }
@@ -301,9 +307,8 @@ div #banner-title {
   border-radius: 1px;
   overflow: hidden;
 }
-.popular-artists-carousel{
+.popular-artists-carousel {
   column-gap: 2rem;
-
 }
 .artist {
   margin-top: 20px;
@@ -344,7 +349,7 @@ PLAYER BAR
   display: flex;
   justify-content: space-between;
   background-color: var(--back-color);
-  height: 80px;
+  height: 100px;
   width: 100vw;
   column-gap: 1vw;
   padding: 20px 0;
@@ -500,14 +505,7 @@ PLAYER BAR
   transition: 0.2s ease-out;
 }
 
-
-
-
-
 /* For medium screens */
-
-
-
 
 @media screen and (max-width: 700px) {
   .player {
@@ -543,10 +541,7 @@ PLAYER BAR
 /* for mobile screens */
 
 @media screen and (max-width: 480px) {
-  main {
-    height: 100vh;
-    
-  }
+  
   section .catalog {
     display: none;
   }
@@ -555,6 +550,7 @@ PLAYER BAR
   }
   .playlist-bar {
     flex-basis: 100vw;
+    height: fit-content;
     align-items: center;
   }
   .player {
@@ -564,9 +560,13 @@ PLAYER BAR
     /*   border: 1px solid;
    */
   }
+  .playerbar{
+    position: sticky;
+    bottom: 0;
+  }
 
   .playercontents {
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: end;
     align-items: center;
     height: 130px;
