@@ -256,12 +256,12 @@ console.log(`Repeat All: ${isRepeatAll}`);
 
 //Next Song button
 nextSong.addEventListener("click", () => {
+  prevSongIndex = songIndex;
   if (isShuffled) {
     let songShuffled;
     songShuffled = Math.floor(Math.random() * songs.length);
     songIndex = songShuffled;
   }
-  prevSongIndex = songIndex;
   songIndex++;
   songIndexReset();
   currentSongActiveMaker();
@@ -270,12 +270,13 @@ nextSong.addEventListener("click", () => {
 
 //Previous Song button
 prevSong.addEventListener("click", () => {
+  prevSongIndex = songIndex;
   if (isShuffled) {
+    
     let songShuffled;
     songShuffled = Math.floor(Math.random() * songs.length);
     songIndex = songShuffled;
   }
-  prevSongIndex = songIndex;
   songIndex--;
   songIndexReset();
   currentSongActiveMaker();
