@@ -1,6 +1,6 @@
-
 //Intialized Variables
-let songIndex = 0;
+let prevSongIndex = 0;
+let songIndex = 1;
 let audioElement = new Audio("./assets/audio/Cartoon - Why We Lose.mp3");
 let playingGif = document.getElementById("playing-gif");
 const popularArtistListCarousel = document.querySelector(
@@ -129,7 +129,6 @@ for (i = 0; i < popularArtistList.length; i++) {
 
   popularArtistListCarousel.appendChild(artistCardArr[i]);
 }
-console.log(artistCardArr);
 
 //Song index Resetter
 function songIndexReset() {
@@ -145,9 +144,8 @@ let playlist = Array.from(document.getElementsByClassName("song-card"));
 
 /**** Playing Logic *****/
 
-function playLogic(playlistArr, songindex) {
+function playLogic(songindex) {
   playerDetailsUpdate(songindex);
-  activeMaker(playlistArr);
   songFile = songs[songindex].filePath;
   audioElement.src = songFile;
 
@@ -173,7 +171,8 @@ playlist.forEach((element, i) => {
   // Songs play from playlist
   playlist[i].addEventListener("click", () => {
     songIndex = parseInt(songs[i].songId);
-    playLogic(playlist, songIndex);
+    playLogic(songIndex);
+    playlistSelectActiveMaker(playlist);
   });
 });
 
@@ -186,15 +185,30 @@ function playerDetailsUpdate(index) {
 }
 
 //Make Playlist song card active
-function activeMaker(arrayElement) {
+function playlistSelectActiveMaker(arrayElement) {
   for (var i = 0; i < arrayElement.length; i++) {
     arrayElement[i].addEventListener("click", function () {
       var current = document.getElementsByClassName("active");
+      console.log(this.className);
+
       current[0].className = current[0].className.replace(" active", "");
+      console.log(this.className);
+
       this.className += " active";
+      console.log(this.className);
     });
   }
 }
+
+//Make Playlist song card active
+function currentSongActiveMaker() {
+  playlist[prevSongIndex].className = playlist[prevSongIndex].className.replace(
+    " active",
+    ""
+  );
+  playlist[songIndex].className += " active";
+}
+
 /*************** Playing Controls *****************/
 
 // Play/Pause Controls
@@ -222,6 +236,7 @@ shuffleBtn.addEventListener("click", () => {
     isShuffled = !isShuffled;
   }
 });
+console.log(`Shuffle: ${isShuffled}`);
 
 // Repeat all or one Function
 let isRepeatAll = true;
@@ -237,7 +252,7 @@ repeatBtn.addEventListener("click", () => {
     console.log(`repeat ${isRepeatAll}`);
   }
 });
-console.log(`repeat ${isRepeatAll}`);
+console.log(`Repeat All: ${isRepeatAll}`);
 
 //Next Song button
 nextSong.addEventListener("click", () => {
@@ -246,9 +261,11 @@ nextSong.addEventListener("click", () => {
     songShuffled = Math.floor(Math.random() * songs.length);
     songIndex = songShuffled;
   }
+  prevSongIndex = songIndex;
   songIndex++;
   songIndexReset();
-  playLogic(playlist, songIndex);
+  currentSongActiveMaker();
+  playLogic(songIndex);
 });
 
 //Previous Song button
@@ -258,9 +275,11 @@ prevSong.addEventListener("click", () => {
     songShuffled = Math.floor(Math.random() * songs.length);
     songIndex = songShuffled;
   }
+  prevSongIndex = songIndex;
   songIndex--;
   songIndexReset();
-  playLogic(playlist, songIndex);
+  currentSongActiveMaker();
+  playLogic(songIndex);
 });
 
 /*********  Slider Progress updater ************/
@@ -320,20 +339,24 @@ audioElement.addEventListener("timeupdate", () => {
     isRepeatAll == true &&
     isShuffled == false
   ) {
+    prevSongIndex = songIndex;
     songIndex++;
     songIndexReset();
-    playLogic(playlist, songIndex);
+    currentSongActiveMaker();
+    playLogic(songIndex);
   } else if (
     audioElement.currentTime == audioElement.duration &&
     isRepeatAll == true &&
     isShuffled == true
   ) {
+    prevSongIndex = songIndex;
     let songShuffled;
     songShuffled = Math.floor(Math.random() * songs.length);
     songIndex = songShuffled;
-    playLogic(playlist, songIndex);
+    currentSongActiveMaker();
+    playLogic(songIndex);
   } else if (audioElement.currentTime == audioElement.duration) {
-    playLogic(playlist, songIndex);
+    playLogic(songIndex);
   }
 
   // Progress bar Updater
@@ -341,17 +364,16 @@ audioElement.addEventListener("timeupdate", () => {
     (audioElement.currentTime / audioElement.duration) * 100
   );
   audioProgress.style.width = `${audioSeeker.value}%`;
-
-  // Music elapsed Time
- /*  let cS = parseInt(audioElement.currentTime % 60);
-  let cM = parseInt((audioElement.currentTime / 60) % 60); 
- document.getElementById("current-time").innerText = `${cM} : ${cS}` */
- document.getElementById("current-time").innerText = new Date(
+  document.getElementById("current-time").innerText = new Date(
     audioElement.currentTime * 1000
-  ).toISOString().substring(14, 19);
+  )
+    .toISOString()
+    .substring(14, 19);
 
   // Music Duration Time
   document.getElementById("duration").innerText = new Date(
     audioElement.duration * 1000
-  ).toISOString().substring(14, 19);
+  )
+    .toISOString()
+    .substring(14, 19);
 });
