@@ -441,6 +441,11 @@ PLAYER BAR
   background: var(--font-secondary); /* Grey background */
   outline: none; /* Remove outline */
   position: relative;
+  cursor: pointer;
+}
+#seeker:hover {
+  height: 3px;
+  transition: 0.1s ease-in;
 }
 .slider-progress {
   position: absolute;
